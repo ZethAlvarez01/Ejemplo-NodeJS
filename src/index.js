@@ -4,9 +4,11 @@ const path = require('path');
 const morgan = require('morgan');
 const multer = require('multer');
 const uuid = require('uuid');
+const { format } = require('timeago.js');
 
 //Inicializaciones
 const app = express();
+require('./database');
 
 //Configuraciones
 app.set('port',process.env.PORT || 3000);
@@ -27,12 +29,19 @@ app.use(multer({
     storage: storage
 }).single('image'));
 
+
+
 //Variables globales
+app.use((req,res,next) => {
+    app.locals.format = format;
+    next();
+});
 
 //Routes
 app.use(require('./routes/index'));
 
 //Archivos estaticos
+app.use(express.static(path.join(__dirname,'public')));
 
 //Start server
 app.listen(app.get('port'), ()=> {
