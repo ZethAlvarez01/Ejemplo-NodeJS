@@ -25,6 +25,7 @@ const storage  = multer.diskStorage({
         cb(null, uuid.v4() + path.extname(file.originalname));
     }
 });
+
 app.use(multer({
     storage: storage
 }).single('image'));
@@ -47,4 +48,8 @@ app.use(express.static(__dirname + '/public'));             /// CARGO LA CARPETA
 app.listen(app.get('port'), ()=> {
     console.log('Server on'.green, app.get('port'));
     
+});
+
+app.use(function (req, res) {
+    res.status(404).send('error');
 });
