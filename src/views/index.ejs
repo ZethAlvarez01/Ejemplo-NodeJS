@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/estilos.css" rel="stylesheet" type="text/css">
+    <script src="/js/script.js"></script>
     <title>Inicio</title>
     <%- include("partials/head") %>
-
+    
 </head>
-<body>
+<body onload="prueba()">
     
     <%- include("partials/navigation") %>
 
@@ -15,7 +17,7 @@
         <div class="row">
             <div class="card-columns">
                 <% images.forEach(function(image) { %>
-                    <div class="card animate__fadeInDown">
+                    <div class="card animated fadeInDown">
                         <img src="<%= image.path %>" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title"><%= image.title %></h5>

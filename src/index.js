@@ -30,7 +30,6 @@ app.use(multer({
 }).single('image'));
 
 
-
 //Variables globales
 app.use((req,res,next) => {
     app.locals.format = format;
@@ -42,6 +41,7 @@ app.use(require('./routes/index'));
 
 //Archivos estaticos
 app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(__dirname + '/public'));             /// CARGO LA CARPETA PUBLIC PARA ARCHIVOS JS Y CSS
 
 //Start server
 app.listen(app.get('port'), ()=> {

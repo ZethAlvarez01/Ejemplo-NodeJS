@@ -1,0 +1,7 @@
+.card:hover{
+    cursor: pointer;
+}
+
+.menu{
+    box-shadow: none;
+}
